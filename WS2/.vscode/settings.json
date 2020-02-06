@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "team.showWelcomeMessage": false,
+    "window.zoomLevel": -1,
+    "files.eol": "\n",
+    "eslint.debug": true,
+    "eslint.probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue"
+    ],
+    "eslint.validate": [
+        "javascript",
+        "html"
+    ],
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "eslint.lintTask.options": ". --ext .html,.js",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+}
