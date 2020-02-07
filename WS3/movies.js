@@ -1,21 +1,9 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
-const axios = require('axios')
 const http = require('http')
+const fetchJSON = require('./fetch')
 
 const search = 'http://www.omdbapi.com/?t=breaking+bad&plot=full&apikey=6bc2668d'
-
-const fetchJSON = async (url) => {
-  let result
-  let error
-  try{
-    const response = await axios.get(url)
-    result = response.data
-    return { result, error }
-  } catch (err) {
-    return { result, error: err }
-  }
-}
 
 http.createServer(async (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })

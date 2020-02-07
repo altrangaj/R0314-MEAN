@@ -1,19 +1,8 @@
-const axios = require('axios')
 const http = require('http')
+const fetchJSON = require('./fetch')
 
 const search = 'https://dog.ceo/api/breeds/list/all'
 
-const fetchJSON = async (url) => {
-  let result
-  let error
-  try{
-    const response = await axios.get(url)
-    result = response.data
-    return { result, error }
-  } catch (err) {
-    return { result, error: err }
-  }
-}
 const randomDogs = async (amount) => {
   const { result, error } = await fetchJSON(search)
   if(error) throw Error(error)
@@ -22,25 +11,49 @@ const randomDogs = async (amount) => {
     const breeds = Object.keys(result.message)
     const index = Math.floor(Math.random() * breeds.length)
     const tulos = fetchJSON(`https://dog.ceo/api/breed/${breeds[index]}/images/random`)
+    if(tulos.error) throw Error(tulos.error)
     promises.push(tulos)
     delete result.message[breeds[index]]
   }
   const selected = await Promise.all(promises)
   return selected
 }
-http.createServer((request, response) => {
+
+http.createServer(async (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })
-  randomDogs(8).then((result) => {
-    const arr = result.map((e) => e.result.message)
-    let html = '<body style="background:black;">'
+  try {
+    const arr = await randomDogs(12)
+    let html = `
+    <body style="
+    background:black;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;">`
     for(let i = 0; i < arr.length; i++) {
-      html += `<img src=${arr[i]} alt="Smiley face" style="width:25%;display:inline-block;">`
+      const url = arr[i].result.message
+      html += `
+      <div style="width:fit-content;height:fit-content;text-align:center;">
+        <div style='position:relative;top:0.95em; font-size:1.3em;line-height:1em;'>
+            <div style="display:inline-block;border-radius:0 0 5px 5px;background-color:rgba(50,50,50,0.8);">
+                <span style="padding:0 0.2em 0 0.2em;color:white;">
+                ${url.split('/', 5)[4]}
+                </span>
+            </div>
+        </div>
+        <img src=${url} alt="koira" 
+        style="
+        min-width:15vw;
+        max-width:25vw;
+        min-height:20vh;
+        max-height:33vh;"> 
+      </div>`
     }
     response.write((`${html}</body>`))
     response.end()
-  }).catch((error) => {
+  } catch(error) {
     response.statusCode = 400
     return response.end(error.message)
-  })
+  }
 }).listen(8081)
 console.log('server running: http://127.0.0.1:8081')
