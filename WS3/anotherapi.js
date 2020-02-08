@@ -5,13 +5,16 @@ const search = 'https://dog.ceo/api/breeds/list/all'
 
 const randomDogs = async (amount) => {
   const { result, error } = await fetchJSON(search)
-  if(error) throw Error(error)
+  if(error) {
+    if(error.name === 'ETIMEDOUT') randomDogs(amount)
+    else throw Error(error)
+    return
+  }
   const promises = []
   for(let i = 0; i < amount; i++) {
     const breeds = Object.keys(result.message)
     const index = Math.floor(Math.random() * breeds.length)
     const tulos = fetchJSON(`https://dog.ceo/api/breed/${breeds[index]}/images/random`)
-    if(tulos.error) throw Error(tulos.error)
     promises.push(tulos)
     delete result.message[breeds[index]]
   }
@@ -22,13 +25,33 @@ const randomDogs = async (amount) => {
 http.createServer(async (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })
   try {
-    const arr = await randomDogs(12)
+    let arr
+    do{
+      // eslint-disable-next-line no-await-in-loop
+      arr = await randomDogs(12)
+    } while(!arr || arr.find((r) => !r.result || r.result.error))
     let html = `
-    <body style="
-    background:black;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
+    <head>
+    <script>
+      setTimeout(() => window.location.reload(),5000)
+      const waitimages = () => {
+        let j = 0
+        const imgs = document.getElementsByClassName('image')
+        const preloadImage = (url) => {
+          let img=new Image()
+          img.src=url
+          img.onerror = () => window.location.reload()
+          img.onload = () => { 
+            j++
+            if(j == imgs.length) document.body.style.opacity = '1' }
+        }
+        for(const i of imgs) preloadImage(i.src)
+      }
+    </script>
+    </head>
+    <body onload="waitimages()" style="opacity:0;background:black;
+    transition: opacity 400ms;transition-timing-function:ease-in;
+    display:flex;flex-wrap:wrap; align-items:center;
     justify-content:center;">`
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i].result.message
@@ -41,18 +64,15 @@ http.createServer(async (request, response) => {
                 </span>
             </div>
         </div>
-        <img src=${url} alt="koira" 
-        style="
-        min-width:15vw;
-        max-width:25vw;
-        min-height:20vh;
-        max-height:33vh;"> 
+        <img class="image" src=${url} alt="koira" 
+        style="min-width:15vw;max-width:25vw;min-height:20vh;max-height:33vh;"> 
       </div>`
     }
     response.write((`${html}</body>`))
     response.end()
   } catch(error) {
     response.statusCode = 400
+    console.log(error)
     return response.end(error.message)
   }
 }).listen(8081)
