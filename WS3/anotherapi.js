@@ -23,7 +23,7 @@ const randomDogs = async (amount) => {
       .then((data) => Promise.resolve(data))
       .catch((error) => {
         console.log('fetchDogPicURL----------------->', error.message, error.errno)
-        delete result.data.message[breeds[index]]
+        delete result.data.message[breeds[index]] // jokainen kuva on omaa rotuaan
         return fetchDogPicURL()
       })
   }
@@ -71,20 +71,21 @@ const server = () => http.createServer(async (request, response) => {
     <body onload="waitimages()" style="opacity:0;background:black;
     transition: opacity 400ms;transition-timing-function:ease-in;
     display:flex;flex-wrap:wrap; align-items:center;overflow:hidden;
-    justify-content:center;">`
+    justify-content:center;margin:0;padding:1vw 1vw 0 1vw;">`
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:fit-content;text-align:center;margin:0 1.3em 0 0;">
-        <div style='position:relative;top:0.95em; font-size:1.3em;line-height:1em;'>
-            <div style="display:inline-block;border-radius:0 0 5px 5px;background-color:rgba(10,0,30,0.8);">
+      <div style="width:fit-content;height:fit-content;text-align:center;margin:-1.3em 1vw 1vw 0;">
+        <div style='position:relative;top:0.95em; font-size:1.3em;line-height:0.95em;'>
+            <div style="display:inline-block;border-bottom:solid 1px #eded92;
+            border-left:solid 1px #eded92;border-right:solid 1px #eded92;border-radius:0 0 5px 5px;background-color:black;">
                 <span style="padding:0 0.2em 0 0.2em;color:#eded92;">
                 ${url.split('/', 5)[4]}
                 </span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:31vh;"> 
+        style="height:calc(33.333vh - 1.2vw);"> 
       </div>`
     }
     response.write((`${html}</body>`))
