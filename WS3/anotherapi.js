@@ -11,7 +11,6 @@ const fetchJSON = (url) => new Promise(function loop(resolve, reject) {
 const search = 'https://dog.ceo/api/breeds/list/all'
 
 const randomDogs = async (amount) => {
-
   let breeds
   const promises = []
   let index
@@ -45,7 +44,7 @@ const server = () => http.createServer(async (request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })
 
     // eslint-disable-next-line no-await-in-loop
-    const arr = await randomDogs(12)
+    const arr = await randomDogs(15)
 
     let html = `
     <head>
@@ -76,23 +75,23 @@ const server = () => http.createServer(async (request, response) => {
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:fit-content;text-align:center;">
+      <div style="width:fit-content;height:fit-content;text-align:center;margin:0 1.3em 0 0;">
         <div style='position:relative;top:0.95em; font-size:1.3em;line-height:1em;'>
-            <div style="display:inline-block;border-radius:0 0 5px 5px;background-color:rgba(50,50,50,0.8);">
-                <span style="padding:0 0.2em 0 0.2em;color:white;">
+            <div style="display:inline-block;border-radius:0 0 5px 5px;background-color:rgba(10,0,30,0.8);">
+                <span style="padding:0 0.2em 0 0.2em;color:#eded92;">
                 ${url.split('/', 5)[4]}
                 </span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="min-width:15vw;max-width:24vw;min-height:20vh;max-height:32vh;"> 
+        style="height:31vh;"> 
       </div>`
     }
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
     console.log(error)
-    if(error.code === 'ETIMEDOUT' || error.message === 'ETIMEDOUT') server().close(() => server())
+    if(error.code === 'ETIMEDOUT' || error.message === 'ETIMEDOUT') server().close(server)
     response.statusCode = 400
     response.write(`
     <head><script>setTimeout(() => window.location.reload(),2500)
