@@ -48,6 +48,7 @@ const server = () => http.createServer(async (request, response) => {
 
     let html = `
     <head>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet"> 
     <script>
       const waitimages = () => {
         let j = 0
@@ -76,18 +77,21 @@ const server = () => http.createServer(async (request, response) => {
       const url = arr[i]
       html += `
       <div style="width:fit-content;height:fit-content;text-align:center;margin:-1.3em 1vw 1vw 0;">
-        <div style='position:relative;top:0.95em; font-size:1.3em;line-height:0.95em;'>
-            <div style="display:inline-block;border-bottom:solid 1px #eded92;
-            border-left:solid 1px #eded92;border-right:solid 1px #eded92;border-radius:0 0 5px 5px;background-color:black;">
-                <span style="padding:0 0.2em 0 0.2em;color:#eded92;">
+        <div style='position:relative;top:1em; font-size:1.1em;line-height:1em;'>
+            <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px rgba(255, 255, 255, 0.7);
+            border-right:solid 1px rgba(255, 255, 255, 0.7);border-radius:0 0 5px 0;background-color:black;">
+                <span style="padding:0 0.1em 0 0;font-family: 'Russo One', sans-serif;color:rgba(255, 255, 255, 0.8);">
                 ${url.split('/', 5)[4]}
                 </span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33.333vh - 1.2vw);"> 
+        style="height:calc(33.333vh - 1vw);"> 
+       
       </div>`
     }
+    html += `<div style="z-index:100;position:absolute;display:block;bottom:0;width:100vw;
+    margin-bottom:-0.5em; height: max(1vw , 1em);background-color: black;">tdhguj</div>`
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
