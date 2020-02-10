@@ -71,27 +71,27 @@ const server = () => http.createServer(async (request, response) => {
       }
     </script>
     </head>
-    <body onload="waitimages()" style="opacity:0;background:black;
-    transition: opacity 400ms;transition-timing-function:ease-in;
-    display:flex;flex-wrap:wrap; flex-direction:row;align-items:center;overflow:hidden;
-    justify-content:center;margin:0;padding: 0.8vw 1vw 0px 1vw;">`
+    <body onload="waitimages()" style='opacity:0;background:black;width:98vw;height:100vh;
+    transition: opacity 400ms;transition-timing-function:ease-in;overflow:hidden;margin:auto;'>
+    <div style="width:100%;height:100vh;padding-top:calc(0.6vw + 2px);
+    display:flex;flex-wrap:wrap; flex-direction:row;align-items:center;
+    justify-content:center;margin:0;">
+    `
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:fit-content;padding:0;text-align:center;margin: -12px 0.8vw 0.8vw 0;">
+      <div style="width:fit-content;height:fit-content;text-align:center;margin: -15px calc(0.6vw + 2px) calc(0.6vw + 2px) 0;">
         <div style='position:relative;top:12px; font-size: 12px;line-height:12px'>
-            <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px black;border-radius:0 0 4px 0;background-color:black;">
-                <span style="z-index:8;padding:0 0.2em 0 0 ;font-family: 'Russo One', sans-serif;color:rgb(191, 191, 191)">
-                ${url.split('/', 5)[4]}
-                </span>
+        <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px black;border-radius:0 0 4px 0;background-color:black;">
+                <span style="z-index:8;padding:0 0.2em 0 0em;font-family: 'Russo One', sans-serif;color:#a9bfd6">${url.split('/', 5)[4]}</span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33vh - 0.8vw);"> 
+        style="height:calc(33.333vh - 0.6vw - 2px);"> 
       </div>`
     }
-    html += `<div style="z-index:100;position:absolute;display:block;bottom:0px;width:100vw;
-    margin-bottom:-3px; height: 1vh;background-color: black;">tdhguj</div>`
+    html += `</div><div style="z-index:100;position:absolute;display:block;bottom:0px;width:100vw;
+    margin-bottom:-5px; padding:0;height: calc(0.6vw + 5px);background-color: black;">tdhguj</div>`
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
