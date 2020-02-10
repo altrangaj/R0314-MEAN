@@ -1,6 +1,8 @@
 const http = require('http')
 const axios = require('axios')
 
+const PORT = process.env.PORT || 8081
+
 const fetchJSON = (url) => new Promise(function loop(resolve, reject) {
   axios.get(url).then((data) => resolve(data)).catch((error) => {
     console.log('fetchJSON     ################ >', error.code, error.syscall, error.address, error.port)
@@ -71,27 +73,25 @@ const server = () => http.createServer(async (request, response) => {
     </head>
     <body onload="waitimages()" style="opacity:0;background:black;
     transition: opacity 400ms;transition-timing-function:ease-in;
-    display:flex;flex-wrap:wrap; align-items:center;overflow:hidden;
-    justify-content:center;margin:0;padding:1vw 1vw 0 1vw;">`
+    display:flex;flex-wrap:wrap; flex-direction:row;align-items:center;overflow:hidden;
+    justify-content:center;margin:0;padding: 0.8vw 1vw 0px 1vw;">`
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:fit-content;text-align:center;margin:-1.3em 1vw 1vw 0;">
-        <div style='position:relative;top:1em; font-size:1.1em;line-height:1em;'>
-            <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px rgba(255, 255, 255, 0.7);
-            border-right:solid 1px rgba(255, 255, 255, 0.7);border-radius:0 0 5px 0;background-color:black;">
-                <span style="padding:0 0.1em 0 0;font-family: 'Russo One', sans-serif;color:rgba(255, 255, 255, 0.8);">
+      <div style="width:fit-content;height:fit-content;padding:0;text-align:center;margin: -12px 0.8vw 0.8vw 0;">
+        <div style='position:relative;top:12px; font-size: 12px;line-height:12px'>
+            <div style="display:inline-block;float:left;text-align:left;border-radius:0 0 3px 0;background-color:black;">
+                <span style="z-index:8;padding:0 0.2em 0.1em 0;font-family: 'Russo One', sans-serif;color:rgba(255, 255, 255, 0.8);">
                 ${url.split('/', 5)[4]}
                 </span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33.333vh - 1vw);"> 
-       
+        style="height:calc(33vh - 0.8vw);"> 
       </div>`
     }
-    html += `<div style="z-index:100;position:absolute;display:block;bottom:0;width:100vw;
-    margin-bottom:-0.5em; height: max(1vw , 1em);background-color: black;">tdhguj</div>`
+    html += `<div style="z-index:100;position:absolute;display:block;bottom:0px;width:100vw;
+    margin-bottom:-3px; height: 1vh;background-color: black;">tdhguj</div>`
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
@@ -104,7 +104,7 @@ const server = () => http.createServer(async (request, response) => {
     justify-content:center;"><span style="color:yellow;font-size:3em;">oops....wait few seconds.</span></body>`)
   }
   response.end()
-}).listen(8081)
+}).listen(PORT)
 
 console.log('server running: http://127.0.0.1:8081')
 
