@@ -80,8 +80,8 @@ const server = () => http.createServer(async (request, response) => {
       html += `
       <div style="width:fit-content;height:fit-content;padding:0;text-align:center;margin: -12px 0.8vw 0.8vw 0;">
         <div style='position:relative;top:12px; font-size: 12px;line-height:12px'>
-            <div style="display:inline-block;float:left;text-align:left;border-radius:0 0 3px 0;background-color:black;">
-                <span style="z-index:8;padding:0 0.2em 0.1em 0;font-family: 'Russo One', sans-serif;color:rgba(255, 255, 255, 0.8);">
+            <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px black;border-radius:0 0 4px 0;background-color:black;">
+                <span style="z-index:8;padding:0 0.2em 0 0 ;font-family: 'Russo One', sans-serif;color:rgb(191, 191, 191)">
                 ${url.split('/', 5)[4]}
                 </span>
             </div>
