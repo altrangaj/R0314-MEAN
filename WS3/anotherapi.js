@@ -45,7 +45,6 @@ const server = () => http.createServer(async (request, response) => {
   try{
     response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })
 
-    // eslint-disable-next-line no-await-in-loop
     const arr = await randomDogs(15)
 
     let html = `
@@ -71,27 +70,25 @@ const server = () => http.createServer(async (request, response) => {
       }
     </script>
     </head>
-    <body onload="waitimages()" style='opacity:0;background:black;width:98vw;height:100vh;
-    transition: opacity 400ms;transition-timing-function:ease-in;overflow:hidden;margin:auto;'>
-    <div style="width:100%;height:100vh;padding-top:calc(0.6vw + 2px);
-    display:flex;flex-wrap:wrap; flex-direction:row;align-items:center;
-    justify-content:center;margin:0;">
-    `
+    <body onload="waitimages()" style='opacity:0;background:black;width:100vw;height:100vh;
+    transition: opacity 400ms;transition-timing-function:ease-in;overflow:hidden;margin-top:0;padding-top:0;'>
+      <div style="width:calc(98vw - 2*(0.4vw + 0.4vh + 2px));height:100%;padding:0 1vw 0 1vw;border:solid calc(0.7*(0.4vw + 0.4vh + 2px)) black;
+      display:flex;flex-wrap:wrap; flex-direction:row;align-items:flex-start;justify-content:center;">`
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:fit-content;text-align:center;margin: -15px calc(0.6vw + 2px) calc(0.6vw + 2px) 0;">
-        <div style='position:relative;top:12px; font-size: 12px;line-height:12px'>
-        <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 1px black;border-radius:0 0 4px 0;background-color:black;">
+      <div style="width:fit-content;height:33.333vh;text-align:center;margin: 0 calc(0.4vw + 0.4vh + 2px) 0 0;">
+        <div style='position:relative;top:1em;height:fit-content; font-size: calc(1.2vh + 0.2vw);line-height:1em; margin-top:-1em;'>
+        <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 0.083em black;border-radius:0 0 0.333em 0;background-color:black;">
                 <span style="z-index:8;padding:0 0.2em 0 0em;font-family: 'Russo One', sans-serif;color:#a9bfd6">${url.split('/', 5)[4]}</span>
             </div>
         </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33.333vh - 0.6vw - 2px);"> 
+        style="height:calc(33.333vh - 0.87*(.4vw + .4vh + 2px));"> 
       </div>`
     }
     html += `</div><div style="z-index:100;position:absolute;display:block;bottom:0px;width:100vw;
-    margin-bottom:-5px; padding:0;height: calc(0.6vw + 5px);background-color: black;">tdhguj</div>`
+    padding:0;height: calc(0.4vw + 0.4vh + 2px);background-color: black;">tdhguj</div>`
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
