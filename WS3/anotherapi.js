@@ -74,6 +74,7 @@ const server = () => http.createServer(async (request, response) => {
     opacity:0;
     background:black;
     margin:0 0 0 0;
+    font-size: calc(.3vh + .3vw + 3px);
     width:100%;height:100%;
     transition: opacity 400ms;
     transition-timing-function:ease-in;
@@ -81,10 +82,10 @@ const server = () => http.createServer(async (request, response) => {
       <div style="
       position:fixed;
       top:0;left:0;
-      width:calc(98% - 2*(.4vw + .4vh + 2px));
-      height:calc(100% - 2*(.4vw + .4vh + 2px));
-      padding:0 1vw 0 1vw;
-      border:solid calc(.4vw + .4vh + 2px) transparent;
+      width:calc(98% - 2em);
+      height:calc(100% - 2em);
+      padding:0 1% 0 1%;
+      border:solid 1em transparent;
       display:flex;
       flex-wrap:wrap;
       align-content:flex-start;
@@ -97,8 +98,8 @@ const server = () => http.createServer(async (request, response) => {
         <div style="
         width:fit-content;
         text-align:center;
-        height:calc(33.333vh - (.4vw + .4vh + 2px)/3);
-        margin: 0 calc(.4vw + .4vh + 2px) 0 0;">
+        height:calc(100vh/3 - 1em/3);
+        margin: 0 1em 0 0;">
           <div style='
           position:relative;
           top:1em;
@@ -119,23 +120,18 @@ const server = () => http.createServer(async (request, response) => {
             </div>
           </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33.333vh - 4*(.4vw + .4vh + 2px)/3);">
+        style="border-radius:1em;height:calc(100vh/3 - 4em/3);">
       </div>`
     }
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
     console.log(error)
-    if(error.code === 'ETIMEDOUT' || error.message === 'ETIMEDOUT') server().close(server)
     response.statusCode = 400
-    response.write(`
-    <head><script>setTimeout(() => window.location.reload(),2500)
-    </script></head><body style="background:black;display:flex;flex-wrap:wrap; align-items:center;
-    justify-content:center;"><span style="color:yellow;font-size:3em;">oops....wait few seconds.</span></body>`)
+    response.end()
+    server().close(server)
   }
-  response.end()
 }).listen(PORT)
 
-console.log('server running: http://127.0.0.1:8081')
-
 server()
+console.log('server running: http://127.0.0.1:8081')
