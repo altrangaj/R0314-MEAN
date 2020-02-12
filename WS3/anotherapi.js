@@ -73,16 +73,16 @@ const server = () => http.createServer(async (request, response) => {
     <body onload="waitimages()" style='
     opacity:0;
     background:black;
-    margin-left:0;
-    width:100vw;height:100vh;
+    margin:0 0 0 0;
+    width:100%;height:100%;
     transition: opacity 400ms;
     transition-timing-function:ease-in;
     overflow:hidden;'>
       <div style="
-      position:absolute;
+      position:fixed;
       top:0;left:0;
-      width:calc(98vw - 2*(.4vw + .4vh + 2px));
-      height:calc(100vh - 2*(.4vw + .4vh + 2px));
+      width:calc(98% - 2*(.4vw + .4vh + 2px));
+      height:calc(100% - 2*(.4vw + .4vh + 2px));
       padding:0 1vw 0 1vw;
       border:solid calc(.4vw + .4vh + 2px) transparent;
       display:flex;
@@ -96,20 +96,21 @@ const server = () => http.createServer(async (request, response) => {
       html += `
         <div style="
         width:fit-content;
+        text-align:center;
         height:calc(33.333vh - (.4vw + .4vh + 2px)/3);
         margin: 0 calc(.4vw + .4vh + 2px) 0 0;">
           <div style='
           position:relative;
           top:1em;
           height:fit-content;
-          font-size: calc(1.2vh + .2vw);
+          font-size: calc(.7vh + .5vw + 3px);
           line-height:1em;
           margin-top:-1em;'>
             <div style="
             display:inline-block;
             float:left;
             text-align:left;
-            border-bottom:solid .083em black;
+            border-bottom:solid .085em black;
             border-radius:0 0 .333em 0;
             background-color:black;">
               <span style="padding:0 .2em 0 0em;font-family: 'Russo One', sans-serif;color:#a9bfd6">
