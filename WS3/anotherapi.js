@@ -49,46 +49,85 @@ const server = () => http.createServer(async (request, response) => {
 
     let html = `
     <head>
-    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet"> 
-    <script>
-      const waitimages = () => {
-        let j = 0
-        const imgs = document.getElementsByClassName('image')
-        const preloadImage = (url) => {
-          let img=new Image()
-          img.src=url
-          img.onerror = () => window.location.reload()
-          img.onload = () => { 
-            j++
-            if(j == imgs.length){ 
-              document.body.style.opacity = '1'
-              setTimeout(() => window.location.reload(),5000)
+      <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet"> 
+      <script>
+        const waitimages = () => {
+          let j = 0
+          const imgs = document.getElementsByClassName('image')
+          const preloadImage = (url) => {
+            let img=new Image()
+            img.src=url
+            img.onerror = () => window.location.reload()
+            img.onload = () => { 
+              j++
+              if(j == imgs.length){ 
+                document.body.style.opacity = '1'
+                setTimeout(() => window.location.reload(),5000)
+              }
             }
           }
+          for(const i of imgs) preloadImage(i.src)
         }
-        for(const i of imgs) preloadImage(i.src)
-      }
-    </script>
+      </script>
     </head>
-    <body onload="waitimages()" style='opacity:0;background:black;width:100vw;height:100vh;
-    transition: opacity 400ms;transition-timing-function:ease-in;overflow:hidden;margin-top:0;padding-top:0;'>
-      <div style="width:calc(98vw - 2*(0.4vw + 0.4vh + 2px));height:100%;padding:0 1vw 0 1vw;border:solid calc(0.7*(0.4vw + 0.4vh + 2px)) black;
-      display:flex;flex-wrap:wrap; flex-direction:row;align-items:flex-start;justify-content:center;">`
+    <body onload="waitimages()" style='
+    opacity:0;
+    background:black;
+    margin-left:0;
+    width:100vw;height:100vh;
+    transition: opacity 400ms;
+    transition-timing-function:ease-in;
+    overflow:hidden;'>
+      <div style="
+      position:fixed;
+      top:0;left:0;
+      width:calc(98vw - 2*(0.4vw + 0.4vh + 2px));
+      height:calc(100vh - 2*(0.4vw + 0.4vh + 2px));
+      padding:0 1vw 0 1vw;
+      border:solid calc(0.4vw + 0.4vh + 2px) red;
+      display:flex;
+      flex-wrap:wrap;
+      align-content:flex-start;
+      flex-direction:row;
+      align-items:flex-start;
+      justify-content:center;">`
     for(let i = 0; i < arr.length; i++) {
       const url = arr[i]
       html += `
-      <div style="width:fit-content;height:33.333vh;text-align:center;margin: 0 calc(0.4vw + 0.4vh + 2px) 0 0;">
-        <div style='position:relative;top:1em;height:fit-content; font-size: calc(1.2vh + 0.2vw);line-height:1em; margin-top:-1em;'>
-        <div style="display:inline-block;float:left;text-align:left;border-bottom:solid 0.083em black;border-radius:0 0 0.333em 0;background-color:black;">
-                <span style="z-index:8;padding:0 0.2em 0 0em;font-family: 'Russo One', sans-serif;color:#a9bfd6">${url.split('/', 5)[4]}</span>
+        <div style="
+        width:fit-content;
+        height:33.333vh;
+        margin: 0 calc(0.4vw + 0.4vh + 2px) 0 0;">
+          <div style='
+          position:relative;
+          top:1em;
+          height:fit-content;
+          font-size: calc(1.2vh + 0.2vw);
+          line-height:1em;
+          margin-top:-1em;'>
+            <div style="
+            display:inline-block;
+            float:left;
+            text-align:left;
+            border-bottom:solid 0.083em black;
+            border-radius:0 0 0.333em 0;
+            background-color:black;">
+              <span style="padding:0 0.2em 0 0em;font-family: 'Russo One', sans-serif;color:#a9bfd6">
+                ${url.split('/', 5)[4]}
+              </span>
             </div>
-        </div>
+          </div>
         <img class="image" src=${url} alt="koira" 
-        style="height:calc(33.333vh - 0.87*(.4vw + .4vh + 2px));"> 
+        style="height:calc(33.333vh - (.4vw + .4vh + 2px));">
       </div>`
     }
-    html += `</div><div style="z-index:100;position:absolute;display:block;bottom:0px;width:100vw;
-    padding:0;height: calc(0.4vw + 0.4vh + 2px);background-color: black;">tdhguj</div>`
+    html += `<div style="
+    z-index:200;
+    position:fixed;
+    top:0;left:0;
+    width:calc(100vw - 2*(0.4vw + 0.4vh + 2px));
+    height:calc(100vh - 2*(0.4vw + 0.4vh + 2px));
+    border:solid calc(0.4vw + 0.4vh + 2px) black;"></div>`
     response.write((`${html}</body>`))
     response.end()
   } catch (error) {
