@@ -62,7 +62,7 @@ const server = () => http.createServer(async (request, response) => {
               j++
               if(j == imgs.length){ 
                 document.body.style.opacity = '1'
-                setTimeout(() => window.location.reload(),5000)
+                setTimeout(() => window.location.reload(),20000)
               }
             }
           }
@@ -82,11 +82,11 @@ const server = () => http.createServer(async (request, response) => {
       <div style="
       position:fixed;
       top:0;left:0;
-      width:calc(98% - 2em);
+      width:calc(100% - 2em);
       height:calc(100% - 2em);
-      padding:0 1% 0 1%;
       border:solid 1em transparent;
       display:flex;
+      margin-top:-0.15em;
       flex-wrap:wrap;
       align-content:flex-start;
       flex-direction:row;
@@ -123,7 +123,14 @@ const server = () => http.createServer(async (request, response) => {
         style="border-radius:1em;height:calc(100vh/3 - 4em/3);">
       </div>`
     }
-    response.write((`${html}</body>`))
+    response.write((`${html} <div style="
+    position:absolute;
+    bottom: 0;
+    z-index:100;
+    width:calc(100% + 4em);
+    height:1em;
+    margin:-1.2em;
+    background:black;"></div></body>`))
     response.end()
   } catch (error) {
     console.log(error)
