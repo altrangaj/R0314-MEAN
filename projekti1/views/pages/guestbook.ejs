@@ -248,7 +248,7 @@
         <table class="files js-navigation-container js-active-navigation-container" data-pjax>
           <thead style="height:fit-content;text-align: left;color:white;background: black;">
             <tr>
-              <th><span >#</span></th>
+              <th><span style="padding-left:0.5em;">#</span></th>
               <th><span >name</span></th>
               <th><span >country</span></th>
               <th><span >message</span></th>
@@ -257,7 +257,7 @@
           <tbody style="text-align: left;">
             <% guests.forEach(u => { %>
               <tr >
-                <td><%= u.id %></td>
+                <td style="padding-left:0.5em;"><%= u.id %></td>
                 <td>
                   <%= u.username %>
                 </td>
