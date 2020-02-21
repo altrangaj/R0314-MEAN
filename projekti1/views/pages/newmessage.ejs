@@ -240,15 +240,12 @@
         </div>
     <div class="d-flex flex-justify-between flex-items-center" >
     <form method="post" action="/newmessage" class="pure-form" style="width:100%;">
-    <fieldset>
+    <fieldset style="padding-top:0;border-top:solid 5px rgb(199, 199, 199)">
       <div class="commit-tease commit-loader">
         <legend class="blank loader-loading">Add message to guestbook</legend>
-        
         <input type="text" style="width:20%;" placeholder="Name" name="username" required>
         <input type="text" style="width:20%;" placeholder="Country" name="country" required>
         <input type="text" style="width:50%;" placeholder="Message" name="message" required>
-        
-
         <button value="Submit" type="submit" style="width:7%;" class="pure-button pure-button-primary">Save</button>
       </div>
     </fieldset>

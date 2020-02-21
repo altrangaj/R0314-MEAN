@@ -22,7 +22,6 @@ app.get('/newmessage', (req, res) => {
 })
 app.post('/newmessage', async (req, res, next) => {
   const json = require('./json_guestbook_data.json')
-  console.log(req)
   json.push({
     id: `${json.length + 1}`,
     username: `${req.body.username}`,
@@ -32,7 +31,6 @@ app.post('/newmessage', async (req, res, next) => {
   })
   try {
     await fsPromises.writeFile('./json_guestbook_data.json', JSON.stringify(json, null, 2))
-    console.log(`hoidettu:${json}`)
     res.render('pages/guestbook', { guests: json })
   } catch (e) {
     console.log(e)
