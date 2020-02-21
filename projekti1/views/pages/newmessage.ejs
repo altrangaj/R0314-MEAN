@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from github.com/altrangaj/Chat-Brainstorm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2020 14:27:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <%- include('../partials/head') %>
+  <script>
+    const checkSelection = () => document.getElementById('addentry').className += ' selected'
+ </script>
+  </head>
+  <body onload="checkSelection()" class="logged-out env-production min-width-lg">
+    <div class="position-relative js-header-wrapper ">
+      <a href="#start-of-content" tabindex="1" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+      <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+      </span>
+      <header class="Header-old header-logged-out  position-relative f4 py-2" role="banner">
+        <div class="container-lg d-flex px-3">
+          <div class="d-flex flex-justify-between flex-items-center">
+              <a class="mr-4" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+                <svg height="32" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+          </div>
+          <div class="HeaderMenu HeaderMenu--logged-out d-flex flex-justify-between flex-items-center flex-auto">
+            <div class="d-none">
+              <button class="btn-link js-details-target" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <svg height="24" class="octicon octicon-x text-gray" viewBox="0 0 12 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+              </button>
+            </div>
+            <nav class="mt-0" aria-label="Global">
+              <%- include('../partials/nav') %>
+            </nav>
+            <div class="d-flex flex-items-center px-0 text-center text-left">
+              <div class="d-lg-flex ">
+                <div class="header-search mr-3 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                    role="combobox"
+                    aria-owns="jump-to-results"
+                    aria-label="Search or jump to"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                >
+                <div class="position-relative">
+                  <form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="234820858" data-scoped-search-url="/altrangaj/Chat-Brainstorm/search" data-unscoped-search-url="/search" action="https://github.com/altrangaj/Chat-Brainstorm/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+                    <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
+                      <input type="text"
+                          class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                          data-hotkey="s,/"
+                          name="q"
+                          value=""
+                          placeholder="Search"
+                          data-unscoped-placeholder="Search GitHub"
+                          data-scoped-placeholder="Search"
+                          autocapitalize="off"
+                          aria-autocomplete="list"
+                          aria-controls="jump-to-results"
+                          aria-label="Search"
+                          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations"
+                          spellcheck="false"
+                          autocomplete="off"
+                        >
+                        <input type="hidden" value="rqiWQdBRq3EEW2nTmUJwDFtZu7eEq6d897D+3N7ljtsmKwO7yAyhVfLuhn3esoBZybYwXFwa9ph+KUuxADWO/g==" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
+                        <input type="hidden" class="js-site-search-type-field" name="type" >
+                          <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
+                          <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">            
+                            <ul class="d-none js-jump-to-suggestions-template-container">
+                              <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+                                <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="#">
+                                  <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+                                    <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+                                  </div>
+                                  <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="#" width="28" height="28">
+                                  <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+                                  </div>
+                                  <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+                                    <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+                                      In this repository
+                                    </span>
+                                    <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+                                      All GitHub
+                                    </span>
+                                    <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                  <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+                                    Jump to
+                                    <span class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                            <ul class="d-none js-jump-to-no-results-template-container">
+                              <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+                                <span class="text-gray">No suggested jump to results</span>
+                              </li>
+                            </ul>
+                            <ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+                              <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+                                <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="#">
+                                  <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+                                    <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+                                  </div>
+                                  <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="#" width="28" height="28">
+                                  <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+                                  </div>
+                                  <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+                                    <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+                                      In this repository
+                                    </span>
+                                    <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+                                      All GitHub
+                                    </span>
+                                    <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                  <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+                                    Jump to
+                                    <span class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                </a>
+                              </li>
+                              <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+                                <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="#">
+                                  <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+                                    <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+                                    <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+                                  </div>
+                                  <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="#" width="28" height="28">
+                                  <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+                                  </div>
+                                  <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+                                    <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+                                      In this repository
+                                    </span>
+                                    <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+                                      All GitHub
+                                    </span>
+                                    <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                  <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+                                    Jump to
+                                    <span class="d-inline-block ml-1 v-align-middle">↵</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                      </label>
+                    </form>  
+                  </div>
+                </div>
+              </div>
+              <a href="https://github.com/login?return_to=%2Faltrangaj%2FChat-Brainstorm"
+                class="HeaderMenu-link no-underline mr-3"
+                data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d8416055891d7161f679591f2b9546f39c1b883e377dc9583be47439eaad1947"
+                data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
+                Sign&nbsp;in
+              </a>
+              <a href="https://github.com/join?source_repo=altrangaj%2FChat-Brainstorm"
+                  class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1"
+                  data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d8416055891d7161f679591f2b9546f39c1b883e377dc9583be47439eaad1947"
+                  data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">
+                  Sign&nbsp;up
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div id="start-of-content" class="show-on-focus"></div>
+    <div id="js-flash-container"></div>
+    <div class="js-notification-shelf-not-found-error" hidden></div>
+    <div class="application-main " data-commit-hovercards-enabled>
+    <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+      <main id="js-repo-pjax-container" data-pjax-container >
+    <div class="pagehead repohead hx_repohead readability-menu bg-gray-light pb-0 pt-3  pb-0">
+      <div class="container-lg mb-4 px-3 d-flex">
+        <div class="flex-auto min-width-0 width-fit mr-3">
+          <h1 class="public  d-flex flex-wrap flex-items-center break-word float-none ">
+      <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+    <span class="author ml-1 flex-self-stretch" itemprop="author">
+      <a class="url fn" rel="author" data-hovercard-type="user" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/altrangaj">altrangaj</a>
+    </span>
+    <span class="path-divider flex-self-stretch">/</span>
+    <strong itemprop="name" class="mr-2 flex-self-stretch">
+      <a data-pjax="#js-repo-pjax-container" href="https://github.com/altrangaj/Chat-Brainstorm">Chat-Brainstorm</a>
+    </strong>
+  </h1>
+        </div>
+        <ul class="pagehead-actions flex-shrink-0"  >
+    <li>
+    <a class="tooltipped tooltipped-s btn btn-sm btn-with-count" aria-label="You must be signed in to watch a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="c12c7047cde6d6e5da670bc21d74a478cf5951f2e1caa7fd927b85b7884d71c6" href="https://github.com/login?return_to=%2Faltrangaj%2FChat-Brainstorm">
+      <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+      Watch
+  </a>    <a class="social-count" href="#"
+        aria-label="1 user is watching this repository">
+        1
+      </a>
+    </li>
+    <li>
+          <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to star a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:234820858,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d985af48ec813f8e364b587d1fe65d7c84c9d467cce3b7c940ea0a32d5baae86" href="https://github.com/login?return_to=%2Faltrangaj%2FChat-Brainstorm">
+        <svg aria-label="star" height="16" class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+        Star
+  </a>
+      <a class="social-count js-social-count" href="#"
+        aria-label="0 users starred this repository">
+        0
+      </a>
+    </li>
+    <li>
+        <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to fork a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:234820858,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="fe3f8ea394e9091f48099c96325050e8528b154b28d5c42f8500dd0a9ea957f3" href="https://github.com/login?return_to=%2Faltrangaj%2FChat-Brainstorm">
+          <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+          Fork
+  </a>
+      <a href="#" class="social-count"
+        aria-label="0 users forked this repository">
+        0
+      </a>
+    </li>
+  </ul>
+      </div>      
+      <%- include('../partials/nav2') %>
+    </div>
+    
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <div class="container-lg clearfix new-discussion-timeline  px-3">
+      <div class="signup-prompt-bg rounded-1 js-signup-prompt" data-prompt="signup" hidden>
+          <div class="signup-prompt p-4 text-center mb-4 rounded-1">
+            <div class="position-relative">
+              <button type="button" class="position-absolute top-0 right-0 btn-link link-gray js-signup-prompt-button" data-ga-click="(Logged out) Sign up prompt, clicked Dismiss, text:dismiss">
+                Dismiss
+              </button>
+              <h3 class="pt-2">Join GitHub today</h3>
+              <p class="col-6 mx-auto">GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.</p>
+              <a class="btn btn-primary" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;files signup prompt&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/altrangaj/Chat-Brainstorm&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="c993efc63b9f7df45edec964efcc0f321a7234aab822641ffd350bdc65856524" data-ga-click="(Logged out) Sign up prompt, clicked Sign up, text:sign-up" href="https://github.com/join?source=prompt-code&amp;source_repo=altrangaj%2FChat-Brainstorm">Sign up</a>
+            </div>
+          </div>
+        </div>
+    <div class="d-flex flex-justify-between flex-items-center" >
+    <form method="post" action="/newmessage" class="pure-form" style="width:100%;">
+    <fieldset>
+      <div class="commit-tease commit-loader">
+        <legend class="blank loader-loading">Add message to guestbook</legend>
+        
+        <input type="text" style="width:20%;" placeholder="Name" name="username">
+        <input type="text" style="width:20%;" placeholder="Country" name="country">
+        <input type="text" style="width:50%;" placeholder="Message" name="message">
+        
+
+        <button value="Submit" type="submit" style="width:7%;" class="pure-button pure-button-primary">Save</button>
+      </div>
+    </fieldset>
+</form>
+</div>
+</div>
+      </main> 
+    </div>
+    </div>    
+    <%- include('../partials/footer') %>
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
+      <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+      </button>
+      You can’t perform that action at this time.
+    </div>
+      <script crossorigin="anonymous" async="async" integrity="sha512-0ME9ftiuUHsYYdeBdLtPHbeL4j0UjTAy9YxHpX0AaZLPPex/JTS5mmHozk8Bnp2czMkd3FmK8DfVID7zxmD5OA==" type="application/javascript" id="js-conditional-compat" data-src="https://github.githubassets.com/assets/compat-bootstrap-d0c13d7e.js"></script>
+      <script crossorigin="anonymous" integrity="sha512-X05w7XvoTXbYlPzf+7O1zoqnJFmcZglL7ScKn3ntB9SmLg/1n8D/cNKIKDk7gtKSJ5PegWSCl44onkA40k4xuA==" type="application/javascript" src="https://github.githubassets.com/assets/frameworks-5f4e70ed.js"></script>
+      <script crossorigin="anonymous" async="async" integrity="sha512-ZP7K9qwdVB2XvLqj5YhjAYr14NLGXPrxxYQpRjyUU0tI1WNahUL1fv5i1eWLMviB3G6t/13jD+F8D96vBK30oA==" type="application/javascript" src="https://github.githubassets.com/assets/github-bootstrap-64fecaf6.js"></script>
+    <div class="js-stale-session-flash flash flash-warn flash-banner" hidden>
+      <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
+      <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+      <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+    </div>
+    <template id="site-details-dialog">
+    <details class="details-reset details-overlay details-overlay-dark lh-default text-gray-dark hx_rsm" open>
+      <summary role="button" aria-label="Close dialog"></summary>
+      <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+        <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
+          <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+        </button>
+        <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+      </details-dialog>
+    </details>
+    </template>
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+      <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
+      </div>
+    </div>
+    <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>
+  </body>
+<!-- Mirrored from github.com/altrangaj/Chat-Brainstorm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2020 14:28:11 GMT -->
+</html>
