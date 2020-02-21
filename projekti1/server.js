@@ -20,7 +20,7 @@ app.get('/newmessage', (req, res) => {
   const data = require('./json_guestbook_data.json')
   res.render('pages/newmessage', { guests: data }) // { guests: data } jotta 'view guestbook'-välilehdessä näkyisi merkintöjen lukumäärä
 })
-app.post('/newmessage', async (req, res) => {
+app.post('/newmessage', async (req, res, next) => {
   const json = require('./json_guestbook_data.json')
   console.log(req)
   json.push({
@@ -36,6 +36,7 @@ app.post('/newmessage', async (req, res) => {
     res.render('pages/guestbook', { guests: json })
   } catch (e) {
     console.log(e)
+    next(e)
   }
 })
 app.listen(8081)
