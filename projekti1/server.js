@@ -13,5 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', indexRouter)
 app.use('/guestbook', guestbookRouter)
 app.use('/newmessage', messageRouter)
-
+app.use((req, res) => {
+  res.status(404).send({ error: `unknown endpoint: ${req.url}` })
+})
 app.listen(8081)
