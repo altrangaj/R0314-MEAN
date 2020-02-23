@@ -21,14 +21,12 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-ejs": "0.0.2",
-    "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "ejs": "^3.0.1",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^3.0.1",
     "express": "^4.17.1"
   }
 }

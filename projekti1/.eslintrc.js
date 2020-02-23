@@ -11,7 +11,6 @@ module.exports = {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
-    "plugins": ["html", "ejs"],
     "settings": {
         "html/report-bad-indent": "error",
         "html/indent": "+2",
