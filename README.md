@@ -7,7 +7,7 @@ Suoritan kurssin workshopit itsenäisesti. Olen liittänyt tehtävänannot mukaa
 ### WS3 Exercise 2 & 3 [in Heroku](https://koiranayttely.herokuapp.com/)
 Ymmärsin materiaalista, että tämä tulee tehdä http-kirjastolla. Ratkaisu käyttää https://dog.ceo/api REST-apia. Sovellus arpoo uudet koirat näkymään 20s välein, jos dog.ceo sen sallii. Client lataa kaikki 15 kuvaa aluksi. Se on selainikkunan kuvasuhteesta kiinni paljonko kuvia näkyy.
 
-## projekti 1
+## projekti 1 [in Heroku](https://r0314-mean-projekti.herokuapp.com/)
 Kokeilin  HTTrack Website Copier/3.x githubiin ja otin siitä pohjan tähän harjoitukseen. Pidin prioriteettina saada mahd samannäköisen sivun. Siispä kaikki toiminnallisuus ei ole mukana.
 
 ![Image of copied github.com](https://github.com/altrangaj/R0314-MEAN/blob/master/projekti1/READMEmd_pictures/home_info.JPG)
