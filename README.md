@@ -12,6 +12,6 @@ Kokeilin  HTTrack Website Copier/3.x githubiin ja otin siitä pohjan tähän har
 
 ![Image of copied github.com](https://github.com/altrangaj/R0314-MEAN/blob/master/projekti1/READMEmd_pictures/home_info.JPG)
 
-## projekti 3
+## projekti 3 - kuvagalleria
 backendissä express-async-errors huolehtii poikkeuksista ja tiedottaa frontendiin saakka. Halusin kokeilla kuvan uploadaus - toiminnon toteuttamista. Eli tässä kuva tallentuu suoraan Buffer-tyyppisenä Mongoon eikä ole riippuvainen lokaalista drivestä. Sopii siis hyvin esim. Herokuun. Leiska ts. CSS on suoraan ws3:een tekemästäni koiranäyttelystä pikaisesti liimattuna...
 ![kuvagalleria](https://raw.githubusercontent.com/altrangaj/R0314-MEAN/master/projekti3/Capture.PNG)
