@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Image from './Image'
 import UploadForm from './UploadForm'
 
@@ -6,11 +7,9 @@ const App = () => {
   const [itemArray, setItemArray] = useState(null)
 
   const fetchFromServer = () => {
-    fetch('http://localhost:8000/api/getall')
-      .then((res) => res.json())
-      .then((data) => {
-        setItemArray(data.items)
-      })
+    axios.get('/api/getall')
+      .then((res) => res.data)
+      .then((data) => setItemArray(data.items))
       .catch((e) => console.log(e))
   }
 

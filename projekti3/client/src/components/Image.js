@@ -22,11 +22,11 @@ const Image = ({
         + `base64,${arrayBufferToBase64(imageData.data)}`
 
   const remove = async () => {
-    await axios.post(`http://localhost:8000/api/delete/${id}`)
+    await axios.post(`/api/delete/${id}`)
     fetchFromServer()
   }
   const update = async () => {
-    await axios.post(`http://localhost:8000/api/update/${id}`, { name: newName.input.value, details: newDetails.input.value })
+    await axios.post(`/api/update/${id}`, { name: newName.input.value, details: newDetails.input.value })
     await fetchFromServer()
     toggleEdit(!edit)
   }

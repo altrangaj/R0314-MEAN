@@ -21,14 +21,14 @@ const itemController = {
   },
   getAll: async (_request, response) => {
     const data = await Item.find({})
-
+    console.log(data)
     response.contentType('json')
     const items = data.map(ch => ch.toJSON())
     response.json({ items }) 
   },
   getItem: async (request, response) => {
     const item = await Item.findById(request.params.id)
-    response.contentType('json')
+    
     response.json(item.toJSON()) 
   },
   update: async (request, response) => {

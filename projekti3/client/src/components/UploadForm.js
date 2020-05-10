@@ -10,7 +10,6 @@ const UploadForm = ({ itemArray, setItemArray }) => {
   const itemDetails = useField('text', '')
 
   const onChangeHandler = (event) => {
-    console.log(event)
     const { files } = event.target
     if(files[0] && files[0].size < 2000000 && files[0].name.match(/\.(jpg|jpeg|png)$/)) {
       setLoaded(0)
@@ -19,7 +18,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
   }
 
   const upload = async (payload) => {
-    const res = await axios.post('http://localhost:8000/api/add', payload, {
+    const res = await axios.post('/api/add', payload, {
       headers: {
         'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
       },
@@ -28,10 +27,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
         setLoaded(ProgressEvent.loaded / ProgressEvent.total * 100)
       },
     })
-    const item = await axios.get(`http://localhost:8000/api/get/${res.data}`)
-    console.log(item)
-    console.log('PASKAA')
-    console.log(itemArray)
+    const item = await axios.get(`/api/get/${res.data}`)
     setItemArray(itemArray.concat(item.data))
   }
 
