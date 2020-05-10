@@ -11,3 +11,7 @@ Ymmärsin materiaalista, että tämä tulee tehdä http-kirjastolla. Ratkaisu k�
 Kokeilin  HTTrack Website Copier/3.x githubiin ja otin siitä pohjan tähän harjoitukseen. Pidin prioriteettina saada mahd samannäköisen sivun. Siispä kaikki toiminnallisuus ei ole mukana.
 
 ![Image of copied github.com](https://github.com/altrangaj/R0314-MEAN/blob/master/projekti1/READMEmd_pictures/home_info.JPG)
+
+## projekti 3 - kuvagalleria (MERN) [Herokussa](https://itemgallery.herokuapp.com/)
+backendissä express-async-errors huolehtii poikkeuksista ja tiedottaa frontendiin saakka. Halusin kokeilla kuvan uploadaus - toiminnon toteuttamista. Eli tässä kuva tallentuu suoraan Buffer-tyyppisenä Mongoon eikä ole riippuvainen lokaalista drivestä. Sopii siis hyvin esim. Herokuun. Leiska ts. CSS on suoraan ws3:een tekemästäni koiranäyttelystä pikaisesti liimattuna...
+![kuvagalleria](https://raw.githubusercontent.com/altrangaj/R0314-MEAN/master/projekti3/Capture.PNG)
