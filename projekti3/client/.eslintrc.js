@@ -40,6 +40,7 @@ module.exports = {
         "nonblock-statement-body-position":"off",
 		"consistent-return":"off",
 		"react/jsx-filename-extension":"off",
+		"react/jsx-props-no-spreading":"off",
 		"react/prop-types":"off"
 	}
 }

@@ -1,14 +1,7 @@
 const router = require('express').Router()
 const multer  = require('multer')
 const items = require('../controllers/items')
-/*
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => {
-    cb(null, 'public')
-  }
-})
-const upload = multer({ storage: storage })
-*/
+
 const upload = multer({
   limits: { fileSize: 5000000 },
   fileFilter(_req, file, cb) {
@@ -27,6 +20,6 @@ router.get('/get/:id', items.getItem)
 
 router.post('/delete/:id', items.delete)
 
-router.post('/add', upload.single('upload'), items.add)
+router.post('/add', upload.single('uploaded_file'), items.add)
 
 module.exports = router
