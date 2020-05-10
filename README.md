@@ -15,3 +15,6 @@ Kokeilin  HTTrack Website Copier/3.x githubiin ja otin siitä pohjan tähän har
 ## projekti 3 - kuvagalleria (MERN) [Herokussa](https://itemgallery.herokuapp.com/)
 backendissä express-async-errors huolehtii poikkeuksista ja tiedottaa frontendiin saakka (konsoliin). Halusin kokeilla kuvan uploadaus - toiminnon toteuttamista. Eli tässä kuva tallentuu suoraan Buffer-tyyppisenä Mongoon eikä ole riippuvainen lokaalista drivestä. Sopii siis hyvin esim. Herokuun. Leiska ts. CSS on suoraan ws3:een tekemästäni koiranäyttelystä pikaisesti liimattuna...
 ![kuvagalleria](https://raw.githubusercontent.com/altrangaj/R0314-MEAN/master/projekti3/Capture.PNG)
+### Postman
+Koska arvostelukriteereissä oli Postman, niin pyrin osoittamaan kuvalla sen läsnäolosta
+![kuvagalleria](https://raw.githubusercontent.com/altrangaj/R0314-MEAN/master/projekti3/Capture2.PNG)
