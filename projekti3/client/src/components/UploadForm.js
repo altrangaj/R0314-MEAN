@@ -28,7 +28,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
       setLoaded(0)
       setSelectedFile(files[0])
     } else {
-      toast.warn('wrong type or to big file')
+      toast.warn('File type is wrong or file size too big!')
     }
   }
 
