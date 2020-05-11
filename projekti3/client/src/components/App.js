@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Image from './Image'
 import UploadForm from './UploadForm'
+require('dotenv').config()
+
+let urlPrefix = ''
+if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
 
 const App = () => {
   const [itemArray, setItemArray] = useState(null)
 
-  const fetchFromServer = () => {
-    axios.get('/api/getall')
+  const fetchFromServer = async () => {
+    await axios.get(`${urlPrefix}/api/getall`)
       .then((res) => res.data)
       .then((data) => setItemArray(data.items))
       .catch((e) => console.log(e))

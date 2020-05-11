@@ -5,6 +5,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Progress } from 'reactstrap'
 import { useField } from '../hooks/field'
 
+let urlPrefix = ''
+if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
+
 const UploadForm = ({ itemArray, setItemArray }) => {
   const [loaded, setLoaded] = useState(0)
   const [selectedFile, setSelectedFile] = useState(null)
@@ -23,7 +26,8 @@ const UploadForm = ({ itemArray, setItemArray }) => {
 
   const upload = async (payload) => {
     try {
-      const res = await axios.post('/api/add', payload, {
+      toast.info('uploading...')
+      const res = await axios.post(`${urlPrefix}/api/add`, payload, {
         headers: {
           'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
         },
@@ -32,9 +36,10 @@ const UploadForm = ({ itemArray, setItemArray }) => {
           setLoaded(ProgressEvent.loaded / ProgressEvent.total * 100)
         },
       })
-      const item = await axios.get(`/api/get/${res.data}`)
-      setItemArray(itemArray.concat(item.data))
+      const item = await axios.get(`${urlPrefix}/api/get/${res.data}`)
+      toast.dismiss()
       toast.success('upload success')
+      setItemArray(itemArray.concat(item.data))
     } catch (e) {
       toast.error('upload fail')
     }
@@ -66,7 +71,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
       <p style={{ margin: '0.7em 0 .4em 0' }}>details </p>
       <input style={{ height: '2em' }} {...itemDetails.input} className="form-control" />
       <div style={{ marginTop: '2em' }}>
-        <ToastContainer style={{fontSize:'1.3em'}} />
+        <ToastContainer style={{fontSize:'2em'}} />
         <Progress max="100" color="success" value={loaded}>
           {Math.round(loaded, 2) }
           %

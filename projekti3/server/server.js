@@ -6,15 +6,14 @@ const itemRouter = require('./routes/itemRouter')
 require('dotenv').config()
 const cors = require('cors')
 
-//mongoose.Promise = global.Promise
-mongoose.connect('xxxxxxxxxxxxxxxxxxxxx', { 
+mongoose.connect(process.env.MONGODB_URI, { 
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true })
 
 app.use(cors())
-app.use(express.static('build'))
+//app.use(express.static('build'))
 app.use(bodyParser.json())
 app.use('/api',itemRouter)
 

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useField } from '../hooks/field'
+import { toast } from 'react-toastify'
 
+let urlPrefix = ''
+if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
 
 const Image = ({
   id, imageData, alt, details, fetchFromServer,
@@ -18,16 +21,20 @@ const Image = ({
     return window.btoa(binary)
   }
 
-  const imgstr = `data:${imageData.contentType};`
+  const imgstr = `data:${imageData.contentType || imageData.type};`
         + `base64,${arrayBufferToBase64(imageData.data)}`
 
   const remove = async () => {
-    await axios.post(`/api/delete/${id}`)
-    fetchFromServer()
+    toast.info('removing from server...')
+    await axios.post(`${urlPrefix}/api/delete/${id}`)
+    await fetchFromServer()
+    toast.dismiss()
   }
   const update = async () => {
-    await axios.post(`/api/update/${id}`, { name: newName.input.value, details: newDetails.input.value })
+    toast.info('updating to server')
+    await axios.post(`${urlPrefix}/api/update/${id}`, { name: newName.input.value, details: newDetails.input.value })
     await fetchFromServer()
+    toast.dismiss()
     toggleEdit(!edit)
   }
   return (
