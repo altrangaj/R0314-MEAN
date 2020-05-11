@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useField } from '../hooks/field'
 import { toast } from 'react-toastify'
+import { useField } from '../hooks/field'
 
 let urlPrefix = ''
 if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
+const options = {
+  autoClose: false,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: 0.5,
+}
 
 const Image = ({
   id, imageData, alt, details, fetchFromServer,
@@ -25,13 +33,13 @@ const Image = ({
         + `base64,${arrayBufferToBase64(imageData.data)}`
 
   const remove = async () => {
-    toast.info('removing from server...')
+    toast.info('removing from server...', options)
     await axios.post(`${urlPrefix}/api/delete/${id}`)
     await fetchFromServer()
     toast.dismiss()
   }
   const update = async () => {
-    toast.info('updating to server')
+    toast.info('updating to server', options)
     await axios.post(`${urlPrefix}/api/update/${id}`, { name: newName.input.value, details: newDetails.input.value })
     await fetchFromServer()
     toast.dismiss()
@@ -58,40 +66,89 @@ const Image = ({
           display: 'inline-block',
           float: 'left',
           textAlign: 'left',
-          borderBottom: 'solid .085em black',
+          borderBottom: 'solid .2em black',
           borderRadius: '0 0 .333em 0',
           backgroundColor: 'black',
         }}
         >
-          <span style={{ padding: '0 .2em 0 0em', fontFamily: 'Russo One, sans-serif', color: '#a9bfd6' }}>
+          <span style={{
+            fontSize: '1.15em', padding: '0 .2em 0 0em', fontFamily: 'Russo One, sans-serif', color: '#a9bfd6',
+          }}
+          >
             {alt}
           </span>
         </div>
 
       </div>
 
-      <img src={imgstr} alt={alt} style={{ borderRadius: '1em', height: 'calc(100vh/3 - 4em/3 - 2em)' }} />
+      <img src={imgstr} alt={alt} style={{ borderRadius: '0 1em 0 0', height: 'calc(100vh/3 - 4em/3 - 1.7em)' }} />
       <div style={{
-        display: 'block', whiteSpace: 'nowrap', height: '2em', backgroundColor: 'red', color: 'white', fontSize: '1em',
+        display: 'block', borderRadius: '0 0 0 1em', whiteSpace: 'nowrap', height: '1.7em', backgroundColor: '#800000', color: 'white', fontSize: 'calc(.7vh + .5vw + 3px)', padding: '0',
       }}
       >
-        <div style={{ display: 'block', whiteSpace: 'nowrap' }} hidden={edit}>
+        <div
+          style={{
+            height: '1.7em', display: 'flex', flexFlow: 'row-wrap', fontSize: '1em', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignContent: 'center', flexWrap: 'nowrap', overflow: 'hidden', margin: '0', padding: '0', whiteSpace: 'nowrap',
+          }}
+          hidden={edit}
+        >
           <div style={{
-            display: 'inline-block', float: 'left', overflow: 'hidden', paddingLeft: '.7em',
+            margin: '0 0 .1em .7em', alignSelf: 'strech', lineHeight: '1em', fontSize: '.8em',
           }}
           >
             {details}
           </div>
-          <div style={{ display: 'inline-block', float: 'right', whiteSpace: 'nowrap' }}>
-            <button type="button" style={{ display: 'inline-block' }} onClick={() => toggleEdit(!edit)}>edit</button>
-            <button type="button" style={{ display: 'inline-block' }} onClick={remove}>delete</button>
+          <div style={{ alignItems: 'center', fontSize: '.8em' }}>
+            <button
+              type="button"
+              style={{
+                alignItems: 'center', fontWeight: 'bold', height: '1.4em', lineHeight: '1em', margin: '.4em',
+              }}
+              onClick={() => toggleEdit(!edit)}
+            >
+              edit
+            </button>
+            <button
+              type="button"
+              style={{
+                alignItems: 'center', fontWeight: 'bold', height: '1.4em', lineHeight: '1em', margin: '.4em .3em .4em 0',
+              }}
+              onClick={remove}
+            >
+              delete
+            </button>
           </div>
         </div>
-        <div hidden={!edit} style={{ display: 'block', whiteSpace: 'nowrap' }}>
-          <input placeholder={alt} style={{ display: 'inline', float: 'left' }} {...newName.input} />
-          <input placeholder={details} style={{ display: 'inline', float: 'left' }} {...newDetails.input} />
-          <button type="button" style={{ display: 'inline', float: 'right' }} onClick={update}>save</button>
-          <button type="button" style={{ display: 'inline', float: 'right' }} onClick={() => toggleEdit(!edit)}>cancel</button>
+        <div
+          hidden={!edit}
+          style={{
+            height: '1.7em', display: 'flex', flexFlow: 'row-wrap', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignContent: 'center', flexWrap: 'nowrap', overflow: 'hidden', margin: '0', padding: '0', whiteSpace: 'nowrap',
+          }}
+        >
+          <div style={{ alignSelf: 'strech', alignItems: 'center' }}>
+            <input placeholder={alt} style={{ width: '5em', fontSize: '.8em' }} {...newName.input} />
+            <input placeholder={details} style={{ width: '7em', fontSize: '.8em' }} {...newDetails.input} />
+          </div>
+          <div style={{ alignSelf: 'strech', alignItems: 'center', fontSize: '.8em' }}>
+            <button
+              type="button"
+              style={{
+                alignItems: 'center', fontWeight: 'bold', height: '1.4em', lineHeight: '1em', margin: '.4em',
+              }}
+              onClick={update}
+            >
+              save
+            </button>
+            <button
+              type="button"
+              style={{
+                alignItems: 'center', fontWeight: 'bold', height: '1.4em', lineHeight: '1em', margin: '.4em .3em .4em 0',
+              }}
+              onClick={() => toggleEdit(!edit)}
+            >
+              cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

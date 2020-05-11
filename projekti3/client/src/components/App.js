@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Image from './Image'
 import UploadForm from './UploadForm'
+
 require('dotenv').config()
 
 let urlPrefix = ''
@@ -54,7 +55,6 @@ const App = () => {
       <UploadForm
         itemArray={itemArray}
         setItemArray={setItemArray}
-        style={{ display: 'inline-block', height: 'calc(100vh/3 - 4em/3)' }}
       />
     </div>
 

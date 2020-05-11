@@ -7,6 +7,14 @@ import { useField } from '../hooks/field'
 
 let urlPrefix = ''
 if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
+const options = {
+  autoClose: false,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: 0.5,
+}
 
 const UploadForm = ({ itemArray, setItemArray }) => {
   const [loaded, setLoaded] = useState(0)
@@ -26,7 +34,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
 
   const upload = async (payload) => {
     try {
-      toast.info('uploading...')
+      toast.info('uploading...', options)
       const res = await axios.post(`${urlPrefix}/api/add`, payload, {
         headers: {
           'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
@@ -41,6 +49,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
       toast.success('upload success')
       setItemArray(itemArray.concat(item.data))
     } catch (e) {
+      toast.dismiss()
       toast.error('upload fail')
     }
   }
@@ -55,28 +64,69 @@ const UploadForm = ({ itemArray, setItemArray }) => {
       setSelectedFile(undefined)
       itemName.reset()
       itemDetails.reset()
-    }).catch((e) => toast.error(e))
+    }).catch((e) => {
+      toast.dismiss()
+      toast.error(e)
+    })
   }
 
   return (
     <div style={{
-      height: 'calc(100vh/3 - 4em/3)', width: 'calc(10vw + 10vh)', color: 'white', fontSize: 'calc(.4vh + .3vw + 2px)',
+      height: 'calc(100vh/3)', width: 'calc(10vw + 10vh)', color: 'white', fontSize: 'calc(.7vh + .5vw + 3px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start', alignContent: 'center', flexWrap: 'nowrap', margin: '0', padding: '0 0 1em 0', whiteSpace: 'nowrap',
     }}
+
     >
-      <span style={{ fontSize: '3em', color: 'red' }}>add new</span>
-      <p style={{ margin: '0.7em 0 .4em 0' }}>Upload picture (jpg,png) </p>
-      <input style={{ height: '2em' }} type="file" name="upload_file" className="form-control-file" onChange={onChangeHandler} />
-      <p style={{ margin: '0.7em 0 .4em 0' }}>name </p>
-      <input placeholder="required" style={{ height: '2em' }} {...itemName.input} className="form-control" required />
-      <p style={{ margin: '0.7em 0 .4em 0' }}>details </p>
-      <input style={{ height: '2em' }} {...itemDetails.input} className="form-control" />
-      <div style={{ marginTop: '2em' }}>
-        <ToastContainer style={{fontSize:'2em'}} />
+
+      <span style={{
+        fontSize: '1.5em', lineHeight: '1em', fontWeight: '800', padding: '0', color: 'red',
+      }}
+      >
+        ADD NEW
+      </span>
+      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
+        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.6em 0' }}>Upload picture (jpg,png) </p>
+        <input style={{ lineHeight: '1em', fontSize: '1em', margin: '0' }} type="file" name="upload_file" className="form-control-file" onChange={onChangeHandler} />
+      </div>
+      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
+        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.3em 0', fontSize: '1em' }}>name </p>
+        <input
+          placeholder="required"
+          style={{
+            height: '2em', lineHeight: '1em', fontSize: '1em', margin: '0', padding: '0',
+          }}
+          {...itemName.input}
+          className="form-control"
+          required
+        />
+      </div>
+      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
+        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.3em 0', fontSize: '1em' }}>details </p>
+        <input
+          style={{
+            lineHeight: '1em', height: '2em', fontSize: '1em', margin: '0', padding: '0',
+          }}
+          {...itemDetails.input}
+          className="form-control"
+        />
+      </div>
+      <div style={{ fontSize: '1em', width: '100%', alignSelf: 'strech' }}>
+        <ToastContainer style={{ fontSize: '1em' }} />
         <Progress max="100" color="success" value={loaded}>
           {Math.round(loaded, 2) }
           %
         </Progress>
-        <button style={{ lineHeight: '1em', display: 'inline-block' }} type="submit" className="btn btn-success btn-block" onClick={onClickHandler}>submit</button>
+
+
+        <button
+          style={{
+            fontSize: '1em', padding: '.2em', lineHeight: '1em', display: 'inline-block',
+          }}
+          type="submit"
+          className="btn btn-success btn-block"
+          onClick={onClickHandler}
+        >
+          submit
+        </button>
       </div>
     </div>
   )
