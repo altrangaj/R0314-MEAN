@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Image from './Image'
 import UploadForm from './UploadForm'
-
-require('dotenv').config()
-
-let urlPrefix = ''
-if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
+import { urlPrefix } from '../util/config'
+import './App.css'
 
 const App = () => {
   const [itemArray, setItemArray] = useState(null)
@@ -23,25 +20,7 @@ const App = () => {
   }, [])
 
   if(itemArray) return (
-
-    <div
-      className="App"
-      style={{
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100%',
-        height: '100%',
-        border: 'solid 1em transparent',
-        display: 'flex',
-        marginTop: '-0.15em',
-        flexWrap: 'wrap',
-        alignContent: 'flex-start',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-      }}
-    >
+    <div className="App">
       {itemArray.map((i) => (
         <Image
           key={i.id}
@@ -57,7 +36,6 @@ const App = () => {
         setItemArray={setItemArray}
       />
     </div>
-
   )
   return <div />
 }

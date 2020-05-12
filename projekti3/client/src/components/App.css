@@ -1,0 +1,17 @@
+.App {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(99.4vw - .6vh - 10px);
+  height: 100%;
+  font-size: calc(.3vh + .3vw + 5px);
+  transition: 400ms;
+  transition-timing-function:ease-out;
+  margin:-.666em 1em 0 1em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}

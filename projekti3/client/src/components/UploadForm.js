@@ -4,17 +4,8 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Progress } from 'reactstrap'
 import { useField } from '../hooks/field'
-
-let urlPrefix = ''
-if(process.env.NODE_ENV === 'development') urlPrefix = 'http://localhost:8000'
-const options = {
-  autoClose: false,
-  hideProgressBar: true,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: 0.5,
-}
+import { options, urlPrefix} from '../util/config'
+import './UpdateForm.css'
 
 const UploadForm = ({ itemArray, setItemArray }) => {
   const [loaded, setLoaded] = useState(0)
@@ -71,55 +62,33 @@ const UploadForm = ({ itemArray, setItemArray }) => {
   }
 
   return (
-    <div style={{
-      height: 'calc(100vh/3)', width: 'calc(10vw + 10vh)', color: 'white', fontSize: 'calc(.7vh + .5vw + 3px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start', alignContent: 'center', flexWrap: 'nowrap', margin: '0', padding: '0 0 1em 0', whiteSpace: 'nowrap',
-    }}
-
-    >
-
-      <span style={{
-        fontSize: '1.5em', lineHeight: '1em', fontWeight: '800', padding: '0', color: 'red',
-      }}
-      >
+    <div id="container2">
+      <span id="form-header">
         ADD NEW
       </span>
-      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
-        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.6em 0' }}>Upload picture (jpg,png) </p>
-        <input style={{ lineHeight: '1em', fontSize: '1em', margin: '0' }} type="file" name="upload_file" className="form-control-file" onChange={onChangeHandler} />
-      </div>
-      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
-        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.3em 0', fontSize: '1em' }}>name </p>
-        <input
-          placeholder="required"
-          style={{
-            height: '2em', lineHeight: '1em', fontSize: '1em', margin: '0', padding: '0',
-          }}
-          {...itemName.input}
-          className="form-control"
-          required
+      <div className="flexItem">
+        <p className="label-style">Upload picture (jpg/png) </p>
+        <input style={{ lineHeight: '1.5em', fontSize: '1em', margin: '0' }} 
+        type="file" name="upload_file" className="form-control-file" onChange={onChangeHandler} 
         />
       </div>
-      <div style={{ textAlign: 'left', width: '100%', alignSelf: 'strech' }}>
-        <p style={{ lineHeight: '1em', margin: '0.2em 0 0.3em 0', fontSize: '1em' }}>details </p>
-        <input
-          style={{
-            lineHeight: '1em', height: '2em', fontSize: '1em', margin: '0', padding: '0',
-          }}
-          {...itemDetails.input}
-          className="form-control"
-        />
+      <div className="flexItem">
+        <p className="label-style">name </p>
+        <input placeholder="required" {...itemName.input} className="form-control text-input" required />
       </div>
-      <div style={{ fontSize: '1em', width: '100%', alignSelf: 'strech' }}>
-        <ToastContainer style={{ fontSize: '1em' }} />
+      <div className="flexItem">
+        <p className="label-style">details </p>
+        <input {...itemDetails.input} className="form-control text-input"/>
+      </div>
+      <div className="flexItem">
+        <ToastContainer style={{ fontSize: '1.4em' }} />
         <Progress max="100" color="success" value={loaded}>
           {Math.round(loaded, 2) }
           %
         </Progress>
-
-
         <button
           style={{
-            fontSize: '1em', padding: '.2em', lineHeight: '1em', display: 'inline-block',
+            fontSize: '1.2em',fontWeight:'bold', verticalAlign:'middle', display: 'inline-block',
           }}
           type="submit"
           className="btn btn-success btn-block"
