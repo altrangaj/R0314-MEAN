@@ -12,8 +12,10 @@ mongoose.connect(process.env.MONGODB_URI, {
   useFindAndModify: false,
   useCreateIndex: true })
 
+
+console.log(process.env.NODE_ENV)
 app.use(cors())
-//app.use(express.static('build'))
+if(process.env.NODE_ENV === 'production') app.use(express.static('build'))
 app.use(bodyParser.json())
 app.use('/api',itemRouter)
 

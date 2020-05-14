@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Progress } from 'reactstrap'
 import { useField } from '../hooks/field'
 import { options, urlPrefix} from '../util/config'
-import './UpdateForm.css'
+import './UploadForm.css'
 
 const UploadForm = ({ addItem }) => {
   const [loaded, setLoaded] = useState(0)
