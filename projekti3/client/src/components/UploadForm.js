@@ -7,7 +7,7 @@ import { useField } from '../hooks/field'
 import { options, urlPrefix} from '../util/config'
 import './UpdateForm.css'
 
-const UploadForm = ({ itemArray, setItemArray }) => {
+const UploadForm = ({ addItem }) => {
   const [loaded, setLoaded] = useState(0)
   const [selectedFile, setSelectedFile] = useState(null)
   const itemName = useField('text', '')
@@ -38,7 +38,7 @@ const UploadForm = ({ itemArray, setItemArray }) => {
       const item = await axios.get(`${urlPrefix}/api/get/${res.data}`)
       toast.dismiss()
       toast.success('upload success')
-      setItemArray(itemArray.concat(item.data))
+      addItem(item.data)
     } catch (e) {
       toast.dismiss()
       toast.error('upload fail')

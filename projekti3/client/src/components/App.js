@@ -8,6 +8,10 @@ import './App.css'
 const App = () => {
   const [itemArray, setItemArray] = useState(null)
 
+  const addItem = (item) => {
+    setItemArray(itemArray.concat(item))
+  }
+
   const fetchFromServer = async () => {
     await axios.get(`${urlPrefix}/api/getall`)
       .then((res) => res.data)
@@ -32,8 +36,7 @@ const App = () => {
         />
       ))}
       <UploadForm
-        itemArray={itemArray}
-        setItemArray={setItemArray}
+        addItem={addItem}
       />
     </div>
   )
