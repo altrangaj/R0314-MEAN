@@ -15,7 +15,7 @@ const MyImage = (props) => {
   const pic = new Image()
   pic.src = `data:${props.picture.contentType};`
         + `base64,${arrayBufferToBase64(props.picture.data.data)}`
- // pic.onload = () => console.log('onload:', props.name, pic)
+  // pic.onload = () => console.log('onload:', props.name, pic)
 
   return (
     <div style={{
