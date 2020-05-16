@@ -72,9 +72,6 @@ const UploadForm = ({ addItem }) => {
     try {
       toast.info('uploading...', options)
       const res = await axios.post(`${urlPrefix}/api/add`, payload, {
-        headers: {
-          'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
-        },
         onUploadProgress: (ProgressEvent) => {
         // eslint-disable-next-line no-mixed-operators
           setLoaded(ProgressEvent.loaded / ProgressEvent.total * 100)
